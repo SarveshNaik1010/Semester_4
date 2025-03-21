@@ -48,7 +48,10 @@ void bresenhamsLine(int x1, int y1, int x2, int y2) {
 }
 
 int main() {
+    printf("DDA Line:\n");
     DDALine(2, 5, 12, 7);
+    printf("--------------------------------------\n");
+    printf("Bresenhams Line:\n");
     bresenhamsLine(2, 5, 12, 7);
     return 0;
 }

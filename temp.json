@@ -1,0 +1,6 @@
+{
+    "centerPosition": [19.348, 77.928],
+    "type": "all/mall/store/botique",
+    "radius": 5,
+    "filters": { "discount": true }
+}

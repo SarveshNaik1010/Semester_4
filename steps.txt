@@ -1,0 +1,63 @@
+******Tasks for setting up GCP app instance******
+1. SSH Access
+2. Disable root login
+3. Install Docker and git
+4. Configure firewall
+5. Allow only HTTPs traffic
+6. Set up Fail2Ban
+
+******Steps performed to set up GCP******
+
+I. Install git
+    1. sudo apt update
+    2. sudo apt install git
+
+II. Install docker
+    # Add Docker's official GPG key:
+    1. sudo apt-get update
+    2. sudo apt-get install ca-certificates curl
+    3. sudo install -m 0755 -d /etc/apt/keyrings
+    4. sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+    5. sudo chmod a+r /etc/apt/keyrings/docker.asc
+
+    # Add the repository to Apt sources:
+    6. echo \
+        "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+        $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}") stable" | \
+    7. sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+    8. sudo apt-get update
+
+III. Setting up firewall
+    Step -1 Install UFW
+    sudo apt install ufw
+
+    Step - 2 check ufw status
+    sudo ufw status verbose
+
+    Step 3: Allow SSH to Prevent Lockout
+    sudo ufw allow ssh
+    sudo ufw allow port/tcp
+
+    Step 4: Deny All Other Incoming Traffic
+    sudo ufw default deny incoming
+    sudo ufw default deny outgoing
+
+    Step 5: Enable UFW
+    sudo ufw enable
+
+    Step 6: Verify UFW Rules
+    sudo ufw status numbered
+
+    Step 7: Reload & Confirm
+    sudo ufw reload
+
+IV. Create a new user
+    1. Create a new user
+    sudo adduser __yourusername__
+
+    2. Add the user to the sudo group
+    sudo usermod -aG sudo __yourusername__
+
+    3. Switch to your new user
+    su - yourusername
+    
