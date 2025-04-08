@@ -16,12 +16,12 @@ CREATE TABLE Students (
 INSERT INTO Instructor (instructorid, instructorname, instructorcity, specialization) VALUES 
 (1, 'Dr. Smith', 'New York', 'Computer Science'),
 (2, 'Prof. Johnson', 'Los Angeles', 'Mathematics'),
-(3, 'Dr. Williams', 'Chicago', 'Physics')
+(3, 'Dr. Williams', 'Chicago', 'Physics'),
 (4, 'Prof. Warner', 'LA', 'Computer Science');
 
 INSERT INTO Students (studentid, studentname, instructorid, studentcity) 
 VALUES 
-(101, 'Alice Brown', 1, 'New York')
+(101, 'Alice Brown', 1, 'New York'),
 (102, 'Bob Johnson', 2, 'Los Angeles'),
 (103, 'Charlie Davis', 1, 'New York'),
 (104, 'Diana Evans', 3, 'Chicago'),
@@ -100,16 +100,12 @@ INSERT INTO employees (first_name, last_name, email, phone_number, hire_date, jo
 ('John', 'Doe', 'john.doe@email.com', '123-456-7890', '2020-06-15', 101, 75000.00, NULL, 1), 
 ('Jane', 'Smith', 'jane.smith@email.com', '987-654-3210', '2019-09-23', 102, 68000.00, 1, 1), 
 ('Robert', 'Brown', 'robert.brown@email.com', '555-123-4567', '2021-02-18', 103, 72000.00, 1, 1), 
-
 ('Emily', 'Davis', 'emily.davis@email.com', '111-222-3333', '2022-03-12', 104, 60000.00, NULL, 2), 
 ('Michael', 'Wilson', 'michael.wilson@email.com', '444-555-6666', '2020-07-29', 105, 58000.00, 4, 2),
-
 ('Sarah', 'Johnson', 'sarah.johnson@email.com', '777-888-9999', '2021-11-05', 106, 65000.00, NULL, 3), 
 ('David', 'Miller', 'david.miller@email.com', '333-444-5555', '2023-01-17', 107, 62000.00, 6, 3),
-
 ('Anna', 'Taylor', 'anna.taylor@email.com', '999-888-7777', '2022-09-10', 108, 70000.00, NULL, 4), 
 ('James', 'Anderson', 'james.anderson@email.com', '666-777-8888', '2018-05-30', 109, 71000.00, 8, 4),
-
 ('Olivia', 'Martinez', 'olivia.martinez@email.com', '555-666-7777', '2023-06-20', 110, 67000.00, NULL, 5), 
 ('Daniel', 'Harris', 'daniel.harris@email.com', '222-333-4444', '2019-12-14', 111, 64000.00, 10, 5);
 
