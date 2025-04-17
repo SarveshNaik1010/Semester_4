@@ -86,7 +86,7 @@ CREATE TABLE employees (
     FOREIGN KEY (department_id) REFERENCES departments(department_id) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY (manager_id) REFERENCES employees(employee_id) ON DELETE SET NULL ON UPDATE CASCADE
 );
-
+    
 -- Insert sample data into departments
 INSERT INTO departments (department_name, location_id) VALUES
 ('Engineering', 1),

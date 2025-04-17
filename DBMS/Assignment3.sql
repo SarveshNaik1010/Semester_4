@@ -1,3 +1,6 @@
+/* -------------------------------------------------------------------------- */
+/*                                   PART 1                                   */
+/* -------------------------------------------------------------------------- */
 -- Creating branch table
 CREATE TABLE branch (
     branch_name VARCHAR(50) PRIMARY KEY,
@@ -101,8 +104,35 @@ INSERT INTO borrower VALUES
 ('Charlie', 503),
 ('David', 504),
 ('Eva', 505),
-('Alice', 506),      -- Alice has two loans
-('Frank', 506);      -- Shared loan with Alice
+('Alice', 506),
+('Frank', 506);
+
+-- 1. Find the names of all branches in loan relation.
+SELECT DISTINCT branch_name FROM loan;
+
+-- 2. Find all loan numbers for loans made at New York Branch with loan amount > 12000.
+SELECT loan_no from loan
+WHERE branch_name = "Main" AND amount > 12000;
+
+-- 3. Find all customers who have a loan from bank. Find their names,loan_no and loan amount.
+SELECT 
+    borrower.cust_name, 
+    loan.loan_no, 
+    loan.amount
+FROM 
+    borrower
+JOIN 
+    loan ON borrower.loan_no = loan.loan_no;
+
+
+-- 4. List all customers in alphabetical order who have loan from Shivaji nagar branch.
+SELECT DISTINCT borrower.cust_name FROM borrower
+WHERE loan_no IN (SELECT loan_no from loan where branch_name = "Main")
+ORDER BY borrower.cust_name;
+
+
+-- 5. Find all customers who have an account or loan or both at bank.
+
 
 
 

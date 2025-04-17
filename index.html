@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="top-section">
+        <input
+          class="card-input card"
+          id="income"
+          type="number"
+          placeholder="Income ($)"
+        />
+        <input
+          class="card-input card expenses"
+          id="expense"
+          type="number"
+          placeholder="Expenses ($)"
+        />
+        <input
+          class="card-input card savings"
+          type="number"
+          placeholder="Savings ($)"
+        />
+      </div>
+
+      <div class="bottom-section">
+        <div class="tile">
+          <div class="label">Bank balance</div>
+          <div class="value bankbalance">$0</div>
+        </div>
+        <div class="tile">
+          <div class="label">Expense</div>
+          <div class="value expense">$0</div>
+        </div>
+        <!-- <div class="tile">
+            <div class="label">Needs</div>
+            <div class="value">$0</div>
+          </div>
+          <div class="tile">
+            <div class="label">Wants</div>
+            <div class="value">$0</div>
+          </div>
+          <div class="tile">
+            <div class="label">Investments</div>
+            <div class="value">$0</div>
+          </div>
+          <div class="tile">
+            <div class="label">Other</div>
+            <div class="value">$0</div>
+          </div> -->
+      </div>
+    </div>
+    <script>
+      const incomeInput = document.querySelector("#income");
+      const expenseInput = document.querySelector("#expense");
+      const bankbalanceDisplay = document.querySelector(".bankbalance");
+      const expenseDisplay = document.querySelector(".expense");
+
+      let bankbalance = 0;
+      let expense = 0;
+
+      console.log(bankbalance);
+      console.log(expense);
+      bankbalanceDisplay.innerHTML = `$${bankbalance}`;
+      expenseDisplay.innerHTML = `$${expense}`;
+
+      document.addEventListener("keypress", function (e) {
+        if (e.key !== "Enter") return;
+
+        // if(incomeInput.value){
+        //     bankbalance += Number(incomeInput.value);
+        //     console.log(bankbalance);
+        //     bankbalanceDisplay.innerHTML = `$${bankbalance}`;
+        //     incomeInput.value = '';
+        // }
+
+        if (expenseInput.value) {
+          if (expenseInput.value >= bankbalance) {
+            alert(
+              `Insufficient Funds! you need $${Number(expenseInput.value) - bankbalance} more.`
+            );
+          } else {
+            expense += Number(expenseInput.value);
+            console.log(expense);
+            expenseDisplay.innerHTML = `$${expense}`;
+            bankbalance -= expense;
+            console.log(bankbalance);
+            bankbalanceDisplay.innerHTML = `$${bankbalance}`;
+          }
+          expenseInput.value = "";
+        }
+      });
+    </script>
+  </body>
+</html>

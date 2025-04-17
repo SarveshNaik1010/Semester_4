@@ -44,9 +44,26 @@ int main() {
     int gd = DETECT, gm;
     initgraph(&gd, &gm, NULL);
 
-    // Define initial points (slightly different than before)
-    Point p1 = {260, 200}, p2 = {340, 200}, p3 = {340, 280}, p4 = {260, 280};
-    Point center = {(p1.x + p2.x + p3.x + p4.x) / 4, (p1.y + p2.y + p3.y + p4.y) / 4};
+    Point p1, p2, p3, p4;
+
+    // --- Input initial coordinates ---
+    printf("Enter coordinates for p1 (x y): ");
+    scanf("%d %d", &p1.x, &p1.y);
+
+    printf("Enter coordinates for p2 (x y): ");
+    scanf("%d %d", &p2.x, &p2.y);
+
+    printf("Enter coordinates for p3 (x y): ");
+    scanf("%d %d", &p3.x, &p3.y);
+
+    printf("Enter coordinates for p4 (x y): ");
+    scanf("%d %d", &p4.x, &p4.y);
+
+    // Calculate center
+    Point center = {
+        (p1.x + p2.x + p3.x + p4.x) / 4,
+        (p1.y + p2.y + p3.y + p4.y) / 4
+    };
 
     // Draw original shape
     cleardevice();
@@ -54,34 +71,53 @@ int main() {
     outtextxy(10, 10, "Initial Shape");
     getch();
 
+    // --- Input transformation parameters ---
+    int tx, ty;
+    float sx, sy, angle;
+
+    printf("Enter translation values (tx ty): ");
+    scanf("%d %d", &tx, &ty);
+
+    printf("Enter scaling factors (sx sy): ");
+    scanf("%f %f", &sx, &sy);
+
+    printf("Enter rotation angle (in degrees): ");
+    scanf("%f", &angle);
+
     // Apply Translation
-    applyTranslation(&p1, 40, 60);
-    applyTranslation(&p2, 40, 60);
-    applyTranslation(&p3, 40, 60);
-    applyTranslation(&p4, 40, 60);
+    applyTranslation(&p1, tx, ty);
+    applyTranslation(&p2, tx, ty);
+    applyTranslation(&p3, tx, ty);
+    applyTranslation(&p4, tx, ty);
     cleardevice();
     drawQuadrilateral(p1, p2, p3, p4);
     outtextxy(10, 10, "Translated Shape");
     getch();
 
+    // Recalculate center after translation
+    center = (Point){
+        (p1.x + p2.x + p3.x + p4.x) / 4,
+        (p1.y + p2.y + p3.y + p4.y) / 4
+    };
+
     // Apply Scaling
-    applyScaling(&p1, 1.3, 1.3, center);
-    applyScaling(&p2, 1.3, 1.3, center);
-    applyScaling(&p3, 1.3, 1.3, center);
-    applyScaling(&p4, 1.3, 1.3, center);
+    applyScaling(&p1, sx, sy, center);
+    applyScaling(&p2, sx, sy, center);
+    applyScaling(&p3, sx, sy, center);
+    applyScaling(&p4, sx, sy, center);
     cleardevice();
     drawQuadrilateral(p1, p2, p3, p4);
     outtextxy(10, 10, "Scaled Shape");
     getch();
 
     // Apply Rotation
-    applyRotation(&p1, 30, center);
-    applyRotation(&p2, 30, center);
-    applyRotation(&p3, 30, center);
-    applyRotation(&p4, 30, center);
+    applyRotation(&p1, angle, center);
+    applyRotation(&p2, angle, center);
+    applyRotation(&p3, angle, center);
+    applyRotation(&p4, angle, center);
     cleardevice();
     drawQuadrilateral(p1, p2, p3, p4);
-    outtextxy(10, 10, "Rotated Shape (30 degrees)");
+    outtextxy(10, 10, "Rotated Shape");
     getch();
 
     closegraph();

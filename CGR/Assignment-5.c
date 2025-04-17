@@ -71,16 +71,34 @@ int main() {
     int gd = DETECT, gm;
     initgraph(&gd, &gm, NULL);
 
-    x_min = 100, y_min = 100, x_max = 400, y_max = 300;
+    int x1, y1, x2, y2;
+
+    // --- Input Clipping Window ---
+    printf("Enter clipping window coordinates:\n");
+    printf("x_min y_min: ");
+    scanf("%d %d", &x_min, &y_min);
+    printf("x_max y_max: ");
+    scanf("%d %d", &x_max, &y_max);
+
+    // --- Input Line Coordinates ---
+    printf("\nEnter line coordinates:\n");
+    printf("x1 y1: ");
+    scanf("%d %d", &x1, &y1);
+    printf("x2 y2: ");
+    scanf("%d %d", &x2, &y2);
+
+    // Draw clipping window
     rectangle(x_min, y_min, x_max, y_max);
-    
-    int x1 = 50, y1 = 250, x2 = 450, y2 = 150;
+
+    // Draw original line in RED
     setcolor(RED);
     line(x1, y1, x2, y2);
     getch();
 
+    // Erase original line and clip
     setcolor(BLACK);
     line(x1, y1, x2, y2);
+
     setcolor(WHITE);
     cohenSutherlandClip(x1, y1, x2, y2);
 
